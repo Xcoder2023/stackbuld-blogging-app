@@ -37,7 +37,7 @@ body {
     top: 0%;
   }
   .newpost.active {
-    left: 0.5%;
+    left: 0;
   }
   .newpost1 {
     position: absolute;
@@ -45,7 +45,7 @@ body {
   }
 
   .newpost1.active {
-    left: 3%;
+    left: 0;
   }
 }
 

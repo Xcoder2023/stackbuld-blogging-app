@@ -162,8 +162,8 @@ const Home = () => {
 
         {/* creating new post form */}
 
-        <div className={toggle ? "newpost1 active " : "newpost1"}>
-          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-3">
+        <div className={toggle ? "newpost1 active " : "newpost1 overflow-hidden"}>
+          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-3 overflow-hidden">
            
             <div className=" cursor-pointer flex justify-between">
             <p className="  text-[rgb(250,254,162)]">
@@ -261,8 +261,8 @@ const Home = () => {
         </div>
 
         {/* updating  a post */}
-        <div className={update ? "newpost active " : "newpost"}>
-          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-1">
+        <div className={update ? "newpost active " : "newpost overflow-hidden"}>
+          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-1 overflow-hidden">
              <div className=" cursor-pointer flex justify-end">
              <img src={icon} alt="" className=" w-7" onClick={handleUpdate}/>
              </div>
