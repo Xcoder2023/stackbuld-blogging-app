@@ -249,7 +249,7 @@ const Home = () => {
                   type="time"
                   name="time"
                   placeholder="Time Zone"
-                  className=" p-3 capitalize"
+                  className="p-3 capitalize w-[100%]"
                 />
               </div>
             </div>
