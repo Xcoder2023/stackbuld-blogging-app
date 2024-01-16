@@ -263,7 +263,7 @@ const Home = () => {
         {/* updating  a post */}
         <div className={update ? "newpost active " : "newpost overflow-hidden"}>
           <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-1 overflow-hidden">
-             <div className=" cursor-pointer flex justify-end">
+             <div className=" cursor-pointer flex justify-end pr-10 mb-[-10px]">
              <img src={icon} alt="" className=" w-7" onClick={handleUpdate}/>
              </div>
             
