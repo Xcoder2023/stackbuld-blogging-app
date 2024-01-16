@@ -163,7 +163,7 @@ const Home = () => {
         {/* creating new post form */}
 
         <div className={toggle ? "newpost1 active " : "newpost1"}>
-          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-5">
+          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-3">
            
             <div className=" cursor-pointer flex justify-between">
             <p className="  text-[rgb(250,254,162)]">
@@ -262,9 +262,9 @@ const Home = () => {
 
         {/* updating  a post */}
         <div className={update ? "newpost active " : "newpost"}>
-          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-2">
+          <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-1">
              <div className=" cursor-pointer flex justify-end">
-             <img src={icon} alt="" className=" w-8" onClick={handleUpdate}/>
+             <img src={icon} alt="" className=" w-7" onClick={handleUpdate}/>
              </div>
             
             <input
