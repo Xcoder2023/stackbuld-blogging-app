@@ -19,7 +19,6 @@ const Home = () => {
     firstName: "",
     lastName: "",
   });
-  
 
   const handleToggle = () => setToggle(!toggle);
   const handleUpdate = () => setUpdate(!update);
@@ -53,7 +52,7 @@ const Home = () => {
     setFilteredData(filteredResults);
     setCurrentPage(1);
   }, [searchQuery, userData]);
-          // declear variables for pagination
+  // declear variables for pagination
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -119,7 +118,7 @@ const Home = () => {
       setSuccessMessage("Error deleting user");
     }
   };
-    // SET SUCCESS MESSAGE TIME OUT
+  // SET SUCCESS MESSAGE TIME OUT
   useEffect(() => {
     const timer = setTimeout(() => {
       setSuccessMessage("");
@@ -129,8 +128,8 @@ const Home = () => {
   }, [successMessage]);
 
   return (
-    <>    
-               {/* UI design starts here */}
+    <>
+      {/* UI design starts here */}
       <div className=" bg-[url('/src/components/assets/skyblue.jpeg')] bg-center bg-cover bg-no-repeat h-[100%] lg:h-[100vh] w-[100%]">
         <p className=" flex text-center justify-center text-[rgb(10,93,113)] pt-5">
           STACKBUILD BLOGG APP
@@ -162,15 +161,14 @@ const Home = () => {
 
         {/* creating new post form */}
 
-        <div className={toggle ? "newpost1 active " : "newpost1 overflow-hidden"}>
+        <div
+          className={toggle ? "newpost1 active " : "newpost1 overflow-hidden"}
+        >
           <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-3 overflow-hidden">
-           
             <div className=" cursor-pointer flex justify-between">
-            <p className="  text-[rgb(250,254,162)]">
-              Create a new post
-            </p>
-             <img src={icon} alt="" className=" w-8" onClick={handleToggle}/>
-             </div>
+              <p className="  text-[rgb(250,254,162)]">Create a new post</p>
+              <img src={icon} alt="" className=" w-8" onClick={handleToggle} />
+            </div>
 
             <div className=" flex flex-col lg:flex-row gap-5">
               <div className=" flex flex-col gap-5">
@@ -188,7 +186,7 @@ const Home = () => {
                   placeholder="First Name"
                   className=" p-3 capitalize"
                   value={firstName}
-                  onChange={(e)=>setFirstName(e.target.value)}
+                  onChange={(e) => setFirstName(e.target.value)}
                 />
                 <input
                   type="text"
@@ -218,7 +216,12 @@ const Home = () => {
                   placeholder="Email Adress"
                   className=" p-3 capitalize"
                 />
-                <input type="date" name="DOB" className="p-3 w-[100%]" />
+                <input
+                  type="date"
+                  name="date"
+                  className="p-3 w-[100%] bg-gray-300"
+                  placeholder="DOB"
+                />
                 <input
                   type="tel"
                   name="phone"
@@ -263,10 +266,10 @@ const Home = () => {
         {/* updating  a post */}
         <div className={update ? "newpost active " : "newpost overflow-hidden"}>
           <form className="  bg-[rgb(10,93,113)] flex flex-col gap-5 p-1 overflow-hidden">
-             <div className=" cursor-pointer flex justify-end pr-10 mb-[-10px]">
-             <img src={icon} alt="" className=" w-7" onClick={handleUpdate}/>
-             </div>
-            
+            <div className=" cursor-pointer flex justify-end pr-10 mb-[-10px]">
+              <img src={icon} alt="" className=" w-7" onClick={handleUpdate} />
+            </div>
+
             <input
               type="text"
               name="title"
