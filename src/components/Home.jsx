@@ -218,7 +218,7 @@ const Home = () => {
                   placeholder="Email Adress"
                   className=" p-3 capitalize"
                 />
-                <input type="date" name="DOB" className=" p-3" />
+                <input type="date" name="DOB" className="p-3 w-[100%]" />
                 <input
                   type="tel"
                   name="phone"
