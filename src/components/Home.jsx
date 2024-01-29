@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import icon from "./assets/delete.png";
 
 const itemsPerPage = 4;
@@ -13,11 +13,13 @@ const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [successMessage, setSuccessMessage] = useState("");
   const [firstName, setFirstName] = useState("");
+  const [userID, setUserID] = useState("");
   // const [updatePostData, setUpdatePostData] = useState("");
   const [updatePostData, setUpdatePostData] = useState({
     title: "",
     firstName: "",
     lastName: "",
+    picture: ""
   });
 
   const handleToggle = () => setToggle(!toggle);
@@ -33,7 +35,7 @@ const Home = () => {
       });
       const data = await response.json();
       // console.log(data, 'my data');
-      setUserData(data.data || {});
+      setUserData(data.data);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -61,30 +63,37 @@ const Home = () => {
 
   // Update User Function
   const updateUser = async (userId) => {
+    console.log("userID: ", userId);
     try {
-      const response = await fetch(
-        `https://dummyapi.io/data/v1/user/${userId}`,
-        {
-          method: "PUT",
-          headers: {
-            "app-id": "65a19335e135fe610e0131e7",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(updatePostData),
-        }
-      );
+      if (userId) {
+        const response = await fetch(
+          `https://dummyapi.io/data/v1/user/${userId}`,
+          {
+            method: "PUT",
+            headers: {
+              "app-id": "65a19335e135fe610e0131e7",
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updatePostData),
+          }
+        );
 
-      if (response.ok) {
-        setSuccessMessage("User updated successfully");
-        fetchData();
-        setUpdatePostData({
-          title: "",
-          firstName: "",
-          lastName: "",
-        });
+        if (response.ok) {
+          setSuccessMessage("User updated successfully");
+          fetchData();
+          setUpdatePostData({
+            title: "",
+            firstName: "",
+            lastName: "",
+            picture: ""
+          });
+          setUserID("");
+        } else {
+          console.error("Error updating user:", response.statusText);
+          setSuccessMessage("Error updating user");
+        }
       } else {
-        console.error("Error updating user:", response.statusText);
-        setSuccessMessage("Error updating user");
+        console.log("No user ID");
       }
     } catch (error) {
       console.error("Error updating user:", error.message);
@@ -311,17 +320,18 @@ const Home = () => {
               name="upload"
               placeholder="Upload Image"
               className="p-4 text-white"
+              value={updatePostData.picture}
+              onChange={(e) =>
+                setUpdatePostData({
+                  ...updatePostData,
+                  picture: e.target.value,
+                })
+              }
             />
 
             <button
               className="bg-[rgb(253,202,209)] p-3"
-              onClick={() =>
-                updateUser({
-                  title: updatePostData.title,
-                  firstName: updatePostData.firstName,
-                  lastName: updatePostData.lastName,
-                })
-              }
+              onClick={() => updateUser(userID)}
             >
               Update
             </button>
@@ -364,6 +374,7 @@ const Home = () => {
                       firstName: user.firstName,
                       lastName: user.lastName,
                     });
+                    setUserID(user.id);
                     handleUpdate();
                   }}
                 >
